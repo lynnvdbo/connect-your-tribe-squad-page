@@ -63,8 +63,8 @@ app.get('/', async function (request, response) {
     'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
     // Filter eventueel alleen op een bepaalde squad
     // 'filter[squads][squad_id][name]': '1I',
-    // 'filter[squads][squad_id][name]': '1J',
-    'filter[squads][squad_id][cohort]': '2526'
+    'filter[squads][squad_id][name]': '1J',
+    // 'filter[squads][squad_id][cohort]': '2526'
   }
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
 
@@ -78,6 +78,28 @@ app.get('/', async function (request, response) {
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
   response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  
+})
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!! Dit linked naar mijn FAVORIET SEIZOEN pagina !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+app.get('/favorietseizoen', async function (request, response) {
+  const params = {
+    'sort': 'name',
+    'fields': '*,squads.*',
+    // Combineer meerdere filters
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // Filter eventueel alleen op een bepaalde squad
+    // 'filter[squads][squad_id][name]': '1I',
+    'filter[squads][squad_id][name]': '1J',
+    // 'filter[squads][squad_id][cohort]': '2526'
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+  const personResponseJSON = await personResponse.json()
+  response.render('favorietseizoen.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  
+})
+
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
