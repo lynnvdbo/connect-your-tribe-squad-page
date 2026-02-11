@@ -100,6 +100,24 @@ app.get('/favorietseizoen', async function (request, response) {
   
 })
 
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!! Dit linked naar mijn FAVORIETE DIER pagina !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+app.get('/favorietedier', async function (request, response) {
+  const params = {
+    'sort': 'name',
+    'fields': '*,squads.*',
+    // Combineer meerdere filters
+    // 'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // Filter eventueel alleen op een bepaalde squad
+    // 'filter[squads][squad_id][name]': '1I',
+    'filter[squads][squad_id][name]': '1J'
+    // 'filter[squads][squad_id][cohort]': '2526'
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+  const personResponseJSON = await personResponse.json()
+  response.render('favorietedier.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  
+})
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
