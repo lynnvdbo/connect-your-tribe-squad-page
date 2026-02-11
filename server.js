@@ -120,6 +120,24 @@ app.get('/favorietedier', async function (request, response) {
 })
 })
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!! Dit linked naar mijn VERJAARDAG pagina !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+app.get('/verjaardag', async function (request, response) {
+  const params = {
+    'sort': 'birthdate',
+    'fields': '*,squads.*',
+    // Combineer meerdere filters
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // Filter eventueel alleen op een bepaalde squad
+    // 'filter[squads][squad_id][name]': '1I',
+    'filter[squads][squad_id][name]': '1J',
+    // 'filter[squads][squad_id][cohort]': '2526'
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+  const personResponseJSON = await personResponse.json()
+  response.render('verjaardag.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  
+})
+
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 app.post('/', async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt

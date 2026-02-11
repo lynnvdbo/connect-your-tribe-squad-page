@@ -1,0 +1,38 @@
+{% render 'partials/headverjaardag.liquid', title: 'Squad page' %}
+
+<header>
+
+  <div class="banner">
+  <img class="header-foto" src="/assets/images/header-foto.png" alt="header-foto" width=2000>
+  </div>
+
+  <div class="overlay">
+    <p><a href="/index1i">Squad 1I</a> </p>
+    <h1><a href="/">Squad 1J</a> </h1>
+  </div>
+</header>
+
+<main>
+
+  <section class="knoppen">
+    <a href="/favorietseizoen" class="favoriet-seizoen">Favoriet seizoen</a>
+    <a href="/favorietedier" class="favoriete-dier">Favoriete dier</a>
+    <a href="/verjaardag" class="verjaardag">Verjaardag</a>
+    <a href="/bijnaam" class="bijnaam">Bijnaam</a> 
+  </section>
+
+
+  <article class="mugshots">
+    {% for person in persons %}
+
+      <figure class="polaroid">
+        <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=500" alt="Profile picture">
+        <h2>{{ person.birthdate | date: '%d-%m-%Y' }} </h2>
+      </figure>
+
+    {% endfor %}   
+  </article>
+
+</main>
+
+{% render 'partials/foot.liquid', squads: squads %}
