@@ -118,6 +118,26 @@ app.get('/favorietedier', async function (request, response) {
   response.render('favorietedier.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
   
 })
+
+//fav dier
+//https://fdnd.directus.app/items/person/?filter[fav_animal]=Panda
+//filter[fav_animal]=' + request.params.id
+app.get('/favorietedier/:id', async function (request, response) {
+  const params = {
+    'sort': 'name',
+    'fields': '*,squads.*',
+    // // Combineer meerdere filters
+    // 'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // // Filter eventueel alleen op een bepaalde squad
+    // // 'filter[squads][squad_id][name]': '1I',
+    'filter[squads][squad_id][name]': '1J',
+    'filter[fav_animal]': `${request.params.id}`
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+
+  const personResponseJSON = await personResponse.json()
+  response.render('favorietedier.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  
 })
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!! Dit linked naar mijn VERJAARDAG pagina !!!!!!!!!!!!!!!!!!!!!!!!!!!!
