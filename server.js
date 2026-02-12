@@ -143,7 +143,7 @@ app.get('/favorietedier/:id', async function (request, response) {
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!! Dit linked naar mijn VERJAARDAG pagina !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 app.get('/verjaardag', async function (request, response) {
   const params = {
-    'sort': 'birthdate',
+    'sort': 'name',
     'fields': '*,squads.*',
     // Combineer meerdere filters
     'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
@@ -155,7 +155,6 @@ app.get('/verjaardag', async function (request, response) {
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
   const personResponseJSON = await personResponse.json()
   response.render('verjaardag.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
-  
 })
 
 
@@ -174,7 +173,6 @@ app.get('/bijnaam', async function (request, response) {
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
   const personResponseJSON = await personResponse.json()
   response.render('bijnaam.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
-  
 })
 
 
