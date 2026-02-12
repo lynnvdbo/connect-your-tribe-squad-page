@@ -33,6 +33,15 @@
             <img src="/assets/images/else-foto.jpg" width=500 alt="Profile picture">
         {% endif %}
 
+        {% comment %} Link kiezen: profilecard > website > github repo {% endcomment %}
+        {% if person.profilecard %}
+          <a class="dossier card-link" href="{{ person.profilecard }}">
+        {% elsif person.website %}
+          <a class="dossier card-link" href="{{ person.website }}">
+        {% else %}
+          <a class="dossier card-link" href="https://github.com/{{ person.github_handle }}/connect-your-tribe-squad-page">
+        {% endif %}
+
         {% comment %} zorgt ervoor dat je alleen voornaam ziet - van maarten {% endcomment %}
         {% assign nameArray = person.name | split: " " %}
         <h2>{{ nameArray[0] }}</h2>

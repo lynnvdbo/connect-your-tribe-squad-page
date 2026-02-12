@@ -89,7 +89,6 @@ body {
     a:hover {
       background-color: var(--black-color);
       color: var(--white-color);
-
   }
 }
 
@@ -99,6 +98,15 @@ body {
   flex-direction: column;
   gap: 3em;
   align-items: center;
+
+   a {
+    color: var(--black-color);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;    
+    }
+   }
 }
 
 
