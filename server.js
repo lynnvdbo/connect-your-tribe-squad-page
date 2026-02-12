@@ -100,6 +100,27 @@ app.get('/favorietseizoen', async function (request, response) {
   
 })
 
+//fav seizoen dit zorgt ervoor dat als je op een tulp emoji klikt de url hier beneden komt
+//https://fdnd.directus.app/items/person/?filter[fav_season]=Tulp
+//filter[fav_season]=' + request.params.id
+app.get('/favorietseizoen/:id', async function (request, response) {
+  const params = {
+    'sort': 'name',
+    'fields': '*,squads.*',
+    // // Combineer meerdere filters
+    // 'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // // Filter eventueel alleen op een bepaalde squad
+    // // 'filter[squads][squad_id][name]': '1I',
+    'filter[squads][squad_id][name]': '1J',
+    'filter[fav_season]': `${request.params.id}`
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+
+  const personResponseJSON = await personResponse.json()
+  response.render('favorietseizoen.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  
+})
+
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!! Dit linked naar mijn FAVORIETE DIER pagina !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 app.get('/favorietedier', async function (request, response) {
@@ -119,7 +140,7 @@ app.get('/favorietedier', async function (request, response) {
   
 })
 
-//fav dier
+//fav dier dit zorgt ervoor dat als je op een panda emoji klikt de url hier beneden komt
 //https://fdnd.directus.app/items/person/?filter[fav_animal]=Panda
 //filter[fav_animal]=' + request.params.id
 app.get('/favorietedier/:id', async function (request, response) {
