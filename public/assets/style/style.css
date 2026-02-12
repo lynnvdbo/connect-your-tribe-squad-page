@@ -127,6 +127,91 @@ h2 {
   text-align: center;
   margin-top: 0.5em;
   font-family: 'Gloria Hallelujah', sans-serif; 
-  font-size: 2em;
+  font-size: 1.2em;
 }
+
+
+/* css FAVORIET SEIZOEN */
+.seizoenen-emojis  {
+  justify-content: center;
+
+  a {
+    font-size: 2em;
+    text-decoration: none;  
+  }
+
+  a:hover {
+    font-size: 2em;
+    scale: 1.3;
+  }
+}
+
+.seizoenen-emojis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0em 2em 2.2em 2em;
+  gap: 1em;
+}
+
+
+/* css FAVORIETE DIER */
+.dieren-emojis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0em 2em 2.2em 2em;
+  gap: 1em;
+
+  a {
+    font-size: 2em;
+    text-decoration: none;
+  }
+
+  a:hover {
+    font-size: 2em;
+    scale: 1.3;
+  }
+}
+
+
+/* css VERJARDAG van filter JONG-OUD OUD-JONG */
+.filter-leeftijd {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  margin-bottom: 2em;
+  font-size: 1em;
+
+  a {
+    color: var(--black-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+
+/* css BIJNAAM van filter A-Z Z-A */
+.filter-bijnaam {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-bottom: 2em;
+  font-size: 1em;
+
+  a {
+    color: var(--black-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+
+
 
