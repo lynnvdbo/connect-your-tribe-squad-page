@@ -248,6 +248,59 @@ app.get('/bijnaam', async function (request, response) {
 })
 
 
+// zorgt voor A-Z
+app.get('/a-z', async function (request, response) {
+  const params = {
+    // Sorteer op naam
+    'sort': '-nickname',
+
+    // Geef aan welke data je per persoon wil terugkrijgen
+    'fields': '*,squads.*',
+
+    // Combineer meerdere filters
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // Filter eventueel alleen op een bepaalde squad
+    // 'filter[squads][squad_id][name]': '1I',
+    'filter[squads][squad_id][name]': '1J',
+    // 'filter[squads][squad_id][cohort]': '2526'
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+
+  // En haal daarvan de JSON op
+  const personResponseJSON = await personResponse.json()
+  response.render('bijnaam.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+})
+
+
+// zorgt voor Z-A
+app.get('/z-a', async function (request, response) {
+  const params = {
+    // Sorteer op naam
+    'sort': 'nickname',
+
+    // Geef aan welke data je per persoon wil terugkrijgen
+    'fields': '*,squads.*',
+
+    // Combineer meerdere filters
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // Filter eventueel alleen op een bepaalde squad
+    // 'filter[squads][squad_id][name]': '1I',
+    'filter[squads][squad_id][name]': '1J',
+    // 'filter[squads][squad_id][cohort]': '2526'
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+
+  // En haal daarvan de JSON op
+  const personResponseJSON = await personResponse.json()
+  response.render('bijnaam.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+})
+
+
+
+
+
+
+
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!! Dit linked naar mijn SQUAD 1I pagina !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 app.get('/index1i', async function (request, response) {
   const params = {
@@ -265,9 +318,6 @@ app.get('/index1i', async function (request, response) {
   response.render('index1i.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
   
 })
-
-
-
 
 
 

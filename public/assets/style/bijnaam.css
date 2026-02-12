@@ -99,6 +99,23 @@ body {
   }
 }
 
+.filter-bijnaam {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-bottom: 2em;
+  font-size: 1em;
+
+  a {
+    color: var(--black-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
 
 .mugshots {
   display: flex;
