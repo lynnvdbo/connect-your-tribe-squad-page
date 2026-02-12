@@ -35,11 +35,11 @@
 
         {% comment %} Link kiezen: profilecard > website > github repo {% endcomment %}
         {% if person.profilecard %}
-          <a class="dossier card-link" href="{{ person.profilecard }}">
+          <a class="dossier card-link" href="{{ person.profilecard }}"></a>
         {% elsif person.website %}
-          <a class="dossier card-link" href="{{ person.website }}">
+          <a class="dossier card-link" href="{{ person.website }}"></a>
         {% else %}
-          <a class="dossier card-link" href="https://github.com/{{ person.github_handle }}/connect-your-tribe-squad-page">
+          <a class="dossier card-link" href="https://github.com/{{ person.github_handle }}/connect-your-tribe-squad-page"></a>
         {% endif %}
 
         {% comment %} zorgt ervoor dat je alleen voornaam ziet - van maarten {% endcomment %}
