@@ -26,8 +26,19 @@
     {% for person in persons %}
 
       <figure class="polaroid">
-        <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=500" alt="Profile picture">
-        <h2>{{ person.birthdate | date: '%d-%m-%Y' }} </h2>
+        {% comment %} if is de eerste foto die hij pakt en als die niet bestaat pakt hij de else foto {% endcomment %}
+        {% if person.mugshot %}
+            <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=500" alt="Profile picture">
+        {% else %}
+            <img src="/assets/images/else-foto.jpg" width=500 alt="Profile picture">
+        {% endif %}
+
+        {% comment %} if is de eerste tekst die hij pakt en als die niet bestaat pakt hij de else tekst {% endcomment %}
+        {% if person.birthdate %}
+            <h2>{{ person.birthdate | date: '%d-%m-%Y' }} </h2>
+        {% else %}
+            <h2>?</h2>
+        {% endif %}
       </figure>
 
     {% endfor %}   

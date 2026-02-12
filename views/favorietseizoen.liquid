@@ -36,7 +36,6 @@
     {% for person in persons %}
 
       <figure class="polaroid">
-
         {% comment %} if is de eerste foto die hij pakt en als die niet bestaat pakt hij de else foto {% endcomment %}
         {% if person.mugshot %}
             <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=500" alt="Profile picture">
@@ -44,10 +43,12 @@
             <img src="/assets/images/else-foto.jpg" width=500 alt="Profile picture">
         {% endif %}
 
-        {% comment %} zorgt ervoor dat je alleen voornaam ziet - van maarten {% endcomment %}
-        {% comment %} {% assign nameArray = person.name | split: " " %}
-        <h2>{{ nameArray[0] }}</h2> {% endcomment %}
-        <h2>{{ person.fav_season }}</h2>
+        {% comment %} if is de eerste tekst die hij pakt en als die niet bestaat pakt hij de else tekst {% endcomment %}
+        {% if person.fav_season %}
+            <h2>{{ person.fav_season }}</h2>
+        {% else %}
+            <h2>?</h2>
+        {% endif %}
       </figure>
 
     {% endfor %}   
