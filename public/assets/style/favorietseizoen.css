@@ -128,3 +128,21 @@ h2 {
   font-size: 2em;
 }
 
+.seizoenen-emojis a {
+  font-size: 2em;
+  text-decoration: none;  
+}
+
+.seizoenen-emojis  {
+  justify-content: center;
+
+}
+
+.seizoenen-emojis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0em 2em 2.2em 2em;
+  gap: 1em;
+}
+
