@@ -93,7 +93,7 @@ body {
 }
 
 
-.knoppen {
+.buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
@@ -157,6 +157,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin-left: 1.7em;
     margin-right: 1.7em;
+    justify-content: center;
   }
 
    a {
