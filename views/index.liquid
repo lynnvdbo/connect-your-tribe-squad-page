@@ -14,12 +14,14 @@
 
 <main>
 
-  <div class="buttons">
-    <a href="/favorietseizoen" class="favoriet-seizoen">Favoriet seizoen</a>
-    <a href="/favorietedier" class="favoriete-dier">Favoriete dier</a>
-    <a href="/verjaardag" class="verjaardag">Verjaardag</a>
-    <a href="/bijnaam" class="bijnaam">Bijnaam</a> 
-  </div>
+  <nav class="buttons">
+    <ul>
+      <li><a href="/favorietseizoen" class="favoriet-seizoen">Favoriet seizoen</a></li>
+      <li><a href="/favorietedier" class="favoriete-dier">Favoriete dier</a></li>
+      <li><a href="/verjaardag" class="verjaardag">Verjaardag</a></li>
+      <li><a href="/bijnaam" class="bijnaam">Bijnaam</a></li>
+    </ul>
+  </nav>
 
   <article class="mugshots">
     {% for person in persons %}
